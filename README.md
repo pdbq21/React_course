@@ -634,5 +634,10 @@ Step 9. Жизненный цикл компонента
         -- componentDidUpdate - вызывается сразу после render. Не вызывается в момент первого render'а компонента.
         -- componentWillUnmount - вызывается сразу перед тем, как компонент будет удален из DOM.
     
-    - js/app.js    
-               
+    - js/app.js
+    
+    
+Step 10. Работа с формой
+    
+    - js/app.js
+    - css/app.css
