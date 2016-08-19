@@ -318,3 +318,112 @@ Step 5. If-else, тернарный оператор
             document.getElementById('root')
         );
         
+        
+Step 6. Порефакторим...        
+        
+    - css/app.css
+        .none {
+          display: none !important;
+        }
+        
+        body {
+          background: rgba(0, 102, 255, 0.38);
+          font-family: sans-serif;
+        }
+        
+        p {
+          margin: 0 0 5px;
+        }
+        
+        .article {
+          background: #FFF;
+          border: 1px solid rgba(0, 89, 181, 0.82);
+          width: 600px;
+          margin: 0 0 5px;
+          box-shadow: 2px 2px 5px -1px rgb(0, 81, 202);
+          padding: 3px 5px;
+        }
+        
+        .news__author {
+          text-decoration: underline;
+          color: #007DDC;
+        }
+        .news__count {
+          margin: 10px 0 0 0;
+          display: block;
+        }            
+    
+    - js/app.js
+        var my_news = [
+          {
+            author: 'Саша Печкин',
+            text: 'В четчерг, четвертого числа...'
+          },
+          {
+            author: 'Просто Вася',
+            text: 'Считаю, что $ должен стоить 35 рублей!'
+          },
+          {
+            author: 'Гость',
+            text: 'Бесплатно. Скачать. Лучший сайт - http://localhost:3000'
+          }
+        ];
+        
+        var Article = React.createClass({
+          render: function() {
+            var author = this.props.data.author,
+                text = this.props.data.text;
+        
+            return (
+              <div className='article'>
+                <p className='news__author'>{author}:</p>
+                <p className='news__text'>{text}</p>
+              </div>
+            )
+          }
+        });
+        
+        var News = React.createClass({
+          render: function() {
+            var data = this.props.data;
+            var newsTemplate;
+        
+            if (data.length > 0) {
+              newsTemplate = data.map(function(item, index) {
+                return (
+                  <div key={index}>
+                    <Article data={item} />
+                  </div>
+                )
+              })
+            } else {
+              newsTemplate = <p>К сожалению новостей нет</p>
+            }
+        
+            return (
+              <div className='news'>
+                {newsTemplate}
+                <strong className={'news__count ' + (data.length > 0 ? '':'none') }>Всего новостей: {data.length}</strong>
+              </div>
+            );
+          }
+        });
+        
+        var App = React.createClass({
+          render: function() {
+            return (
+              <div className='app'>
+                <h3>Новости</h3>
+                <News data={my_news} />
+              </div>
+            );
+          }
+        });
+        
+        ReactDOM.render(
+          <App />,
+          document.getElementById('root')
+        );               
+                
+            
+        
