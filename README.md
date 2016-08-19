@@ -26,7 +26,8 @@ Step 1. Подготовка
         -- Локальный сервер:
             Создадим с помощью Node.js* и express локальный сервер
                 npm install express --save-dev
-                При использовании флага --save-dev, пакет express добавится в список зависимостей нашего проекта.
+                Note:
+                    При использовании флага --save-dev, пакет express добавится в список зависимостей нашего проекта.
                 
         -- server.js
                 var express = require('express');
@@ -53,4 +54,39 @@ Step 1. Подготовка
             
         -- Запустите наш сервер node server.js
             npm start
-            это возможно, потому что у нас в файле package.json есть секция scripts, в которой указана команда start.
+            Note:
+                это возможно, потому что у нас в файле package.json есть секция scripts, в которой указана команда start.
+            
+                        
+Step 2. Подключаем react 
+
+    - index.html
+        ...
+            <script src="js/react/react.js"></script>
+            <script src="js/react/react-dom.js"></script>
+            <script src="js/app.js"></script>
+          </body>
+        </html>
+        
+    - js/app.js
+        ReactDOM.render(
+          React.createElement('h1', null, 'Hello, Word!'),
+          document.getElementById('root')
+        );
+        Or
+        ReactDOM.render(
+                  <h1>Hello, world!</h1>,   // JSX
+                  document.getElementById('root')
+                );
+        Note:
+            ReactDOM.render, принимает первым аргументом - реакт-компонент, а вторым - элемент DOM дерева, куда мы хотим добавить react.
+    - babel
+        -- browser.min.js - CDN:https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js
+    
+    - index.html
+        <script src="js/react/react.js"></script>
+            <script src="js/react/react-dom.js"></script>
+            <script src="js/react/browser.min.js"></script>
+            <script type="text/babel" src="js/app.js"></script>
+          </body>
+        </html>
