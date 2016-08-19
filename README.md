@@ -84,9 +84,82 @@ Step 2. Подключаем react
         -- browser.min.js - CDN:https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js
     
     - index.html
-        <script src="js/react/react.js"></script>
+            ...
+            <script src="js/react/react.js"></script>
             <script src="js/react/react-dom.js"></script>
             <script src="js/react/browser.min.js"></script>
             <script type="text/babel" src="js/app.js"></script>
           </body>
         </html>
+        
+    
+Step 3. Создание компонента
+    
+    - js/app.js
+        var App = React.createClass({
+          render: function() {
+            return (
+              <div className="app">
+                Всем привет, я компонент App!
+              </div>
+            );
+          }
+        });
+        
+        ReactDOM.render(
+          <App />,
+          document.getElementById('root')
+        );
+        
+        Node: 
+            I instal:
+                npm install --save-dev babel-cli;
+                npm install babel-preset-es2015 --save-dev
+            Create:
+                .babelrc
+                    {
+                      "presets": ["es2015"]
+                    }
+    - js/app.js
+        var News = React.createClass({
+          render: function() {
+            return (
+              <div className="news">
+                К сожалению, новостей нет.
+              </div>
+            );
+          }
+        });
+        
+        var Comments = React.createClass({
+          render: function() {
+            return (
+              <div className="comments">
+                Нет новостей - комментировать нечего
+              </div>
+            );
+          }
+        });
+        
+        var App = React.createClass({
+          render: function() {
+            return (
+              <div className="app">
+                Всем привет, я компонент App! Я умею отображать новости.
+                <News />
+                <Comments />
+              </div>
+            );
+          }
+        });
+        
+        ReactDOM.render(
+          <App />,
+          document.getElementById('root')
+        );
+        
+    - install React Developer Tools
+        https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+        
+        
+        
